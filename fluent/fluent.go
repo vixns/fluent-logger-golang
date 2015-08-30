@@ -162,7 +162,7 @@ func (f *Fluent) PostRawData(data []byte) {
 }
 
 func (f *Fluent) EncodeData(tag string, tm time.Time, message interface{}) (data []byte, err error) {
-	timeUnix := tm.Unix()
+	timeUnix := tm.UnixNano()
 	msg := &Message{Tag: tag, Time: timeUnix, Record: message}
 	data, err = msg.MarshalMsg(nil)
 	return
